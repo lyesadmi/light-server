@@ -11,7 +11,9 @@ const send404 = (res) => {
 export const server = createServer((req, res) => {
     const reqUrl = parse(req.url, true);
     if (reqUrl.pathname == '/' && req.method === 'GET') {
-        services.sampleRequest(req, res);
+        services.sampleGetRequest(req, res);
+    } else if (reqUrl.pathname == '/post' && req.method === 'POST') {
+        services.samplePostRequest(req, res);
     } else {
         send404(res);
     }
